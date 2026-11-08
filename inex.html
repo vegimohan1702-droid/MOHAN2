@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendSmart | Expense Tracker</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>SpendSmart.</h2>
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#transactions">Transactions</a>
+            <a href="#budget">Budget Planner</a>
+        </nav>
+        <button id="themeBtn">🌙 Toggle Theme</button>
+    </aside>
+
+    <main class="main">
+        <header>
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome! Manage your money smarter.</p>
+            </div>
+            <span id="today"></span>
+        </header>
+
+        <section class="summary" id="dashboard">
+            <div class="card">
+                <p>Total Balance</p>
+                <h2 id="balance">₹0.00</h2>
+            </div>
+            <div class="card">
+                <p>Total Income</p>
+                <h2 id="income">₹0.00</h2>
+            </div>
+            <div class="card">
+                <p>Total Expenses</p>
+                <h2 id="expense">₹0.00</h2>
+            </div>
+        </section>
+
+        <section class="content-grid">
+            <div class="panel">
+                <h2>Add Transaction</h2>
+
+                <form id="transactionForm">
+                    <label>Transaction Name</label>
+                    <input type="text" id="title" placeholder="e.g. Shopping" required>
+
+                    <label>Amount (₹)</label>
+                    <input type="number" id="amount" min="0.01" step="0.01" required>
+
+                    <label>Type</label>
+                    <select id="type">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+
+                    <label>Category</label>
+                    <select id="category">
+                        <option>Food</option>
+                        <option>Travel</option>
+                        <option>Shopping</option>
+                        <option>Education</option>
+                        <option>Bills</option>
+                        <option>Salary</option>
+                        <option>Other</option>
+                    </select>
+
+                    <label>Date</label>
+                    <input type="date" id="date" required>
+
+                    <button type="submit" id="submitBtn">Add Transaction</button>
+                    <button type="button" id="cancelEdit" hidden>Cancel Edit</button>
+                </form>
+            </div>
+
+            <div class="panel" id="budget">
+                <h2>Monthly Budget</h2>
+
+                <label>Set your budget (₹)</label>
+                <input type="number" id="budgetInput" min="0" placeholder="Enter budget">
+
+                <button id="saveBudget">Save Budget</button>
+
+                <h3 id="budgetText">No budget set</h3>
+
+                <div class="progress">
+                    <div id="progressBar"></div>
+                </div>
+
+                <p id="budgetMessage"></p>
+            </div>
+        </section>
+
+        <section class="panel chart-panel">
+            <h2>Expense Analytics</h2>
+            <div class="charts">
+                <div>
+                    <h3>Category Breakdown</h3>
+                    <canvas id="expenseChart"></canvas>
+                </div>
+                <div>
+                    <h3>Income vs Expenses</h3>
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel" id="transactions">
+            <h2>Transaction History</h2>
+
+            <input type="text" id="search" placeholder="Search transactions...">
+
+            <select id="filter">
+                <option value="all">All Transactions</option>
+                <option value="income">Income</option>
+                <option value="expense">Expenses</option>
+            </select>
+
+            <div id="transactionList"></div>
+        </section>
+    </main>
+
+    
+</body><script src="script1.js"></script>
+</html>
